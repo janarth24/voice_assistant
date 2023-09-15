@@ -5,6 +5,9 @@ import speech_recognition as sr
 # creating take_commands() function which
 # can take some audio, Recognize and return
 # if there are not any errors
+#importing web browser
+import webbrowser
+
 def take_commands():
     # initializing speech_recognition
     r = sr.Recognizer()
@@ -13,7 +16,7 @@ def take_commands():
         print('Listening.')
         r.adjust_for_ambient_noise(source)
         
-        r.pause_threshold = 0.7
+        r.pause_threshold = 0.5
         # storing audio/sound to audio variable
         audio = r.listen(source)
         try:
@@ -43,8 +46,10 @@ def Speak(audio):
 # Driver Code
 if __name__ == '__main__':
     # using while loop to communicate infinitely
+    mylist=["youtube","skillrack","facebook"]
     while True:
-        command = take_commands()
+        commanded = take_commands()
+        command=commanded.lower()
         if "exit" in command:
             Speak("Sure sir! as your wish, bai")
             break
@@ -54,3 +59,18 @@ if __name__ == '__main__':
             Speak("copyassignment website is best to learn python")
         if "code" in command:
             Speak("You can get this code from c")
+        if command in mylist:
+            match command:
+                case "youtube":
+                    webbrowser.open("https://youtube.com/" )
+                case "skillrack":
+                    webbrowser.open("https://www.skillrack.com/")
+                case "facebook":
+                    webbrowser.open("https://www.facebook.com/")    
+                    
+            Speak("You can get this code from c") 
+           # url="https://youtube.com/"   
+            
+            
+
+            
