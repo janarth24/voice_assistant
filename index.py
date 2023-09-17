@@ -82,9 +82,7 @@ if __name__ == '__main__':
                 case "facebook":
                     Speak("Openning FaceBook")
                     webbrowser.open("https://www.facebook.com/")    
-                    
-            Speak("You can get this code from c") 
-           # url="https://youtube.com/"   
+                      
             
             
 
