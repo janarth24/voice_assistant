@@ -7,6 +7,8 @@ import speech_recognition as sr
 # if there are not any errors
 #importing web browser
 import webbrowser
+#importing os
+import os
 
 def take_commands():
     # initializing speech_recognition
@@ -46,26 +48,39 @@ def Speak(audio):
 # Driver Code
 if __name__ == '__main__':
     # using while loop to communicate infinitely
-    mylist=["youtube","skillrack","facebook"]
+    myweb=["youtube","skillrack","facebook"]
+    mysystem=["open calculator","open word","open powerpoint","open wordpad"]
     while True:
         commanded = take_commands()
         command=commanded.lower()
         if "exit" in command:
             Speak("Sure sir! as your wish, bai")
             break
-        if "insta" in command:
-            Speak("Best python page on instagram is pythonhub")
-        if "learn" in command:
-            Speak("copyassignment website is best to learn python")
-        if "code" in command:
-            Speak("You can get this code from c")
-        if command in mylist:
+        if(command in mysystem):
+            match command:
+                case "open calculator":
+                    Speak("Opening Calculator")
+                    os.system("calc.exe")
+                case "open wordpad":
+                    Speak("Opening Wordpad")
+                    os.system("write.exe")   
+                case "open word":
+                    Speak("opening word")
+                    os.system("start winword")
+                case "open powerpoint":
+                    Speak("opening powerpoint")
+                    os.system("start powerpnt")    
+            
+        if command in myweb:
             match command:
                 case "youtube":
+                    Speak("Openning Youtube")
                     webbrowser.open("https://youtube.com/" )
                 case "skillrack":
+                    Speak("Openning SkiiRack")
                     webbrowser.open("https://www.skillrack.com/")
                 case "facebook":
+                    Speak("Openning FaceBook")
                     webbrowser.open("https://www.facebook.com/")    
                     
             Speak("You can get this code from c") 
