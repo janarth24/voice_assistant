@@ -9,6 +9,9 @@ import speech_recognition as sr
 import webbrowser
 #importing os
 import os
+import pygetwindow as gw
+import pyautogui
+
 
 def take_commands():
     # initializing speech_recognition
@@ -81,7 +84,26 @@ if __name__ == '__main__':
                     webbrowser.open("https://www.skillrack.com/")
                 case "facebook":
                     Speak("Openning FaceBook")
-                    webbrowser.open("https://www.facebook.com/")    
+                    webbrowser.open("https://www.facebook.com/")
+        if "close calculator" in command:
+                calculator_window = gw.getWindowsWithTitle("Calculator")
+                if calculator_window:
+                    calculator_window[0].close()
+                    Speak("Calculator closed.")
+                else:
+                    Speak
+                    ("Calculator window not found.")
+        else:
+            print("Command not recognized.")
+        if "close wordpad" in command:
+                wordpad_window = gw.getWindowsWithTitle("Wordpad")
+                if wordpad_window:
+                    wordpad_window[0].close()
+                    Speak("wordpad closed.")
+                else:
+                    Speak
+                    ("wordpad window not found.")
+        
                       
             
             
