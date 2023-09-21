@@ -9,8 +9,11 @@ import speech_recognition as sr
 import webbrowser
 #importing os
 import os
+import time 
 import pygetwindow as gw
 import pyautogui
+import selenium
+from selenium import webdriver
 
 
 def take_commands():
@@ -53,11 +56,12 @@ if __name__ == '__main__':
     # using while loop to communicate infinitely
     myweb=["youtube","skillrack","facebook"]
     mysystem=["open calculator","open word","open powerpoint","open wordpad"]
+    myclose=["close calculator","close word","close wordpad","close powerpoint"]
     while True:
         commanded = take_commands()
         command=commanded.lower()
         if "exit" in command:
-            Speak("Sure sir! as your wish, bai")
+            Speak("Sure sir! as your wish, bye")
             break
         if(command in mysystem):
             match command:
@@ -85,24 +89,54 @@ if __name__ == '__main__':
                 case "facebook":
                     Speak("Openning FaceBook")
                     webbrowser.open("https://www.facebook.com/")
-        if "close calculator" in command:
-                calculator_window = gw.getWindowsWithTitle("Calculator")
-                if calculator_window:
-                    calculator_window[0].close()
-                    Speak("Calculator closed.")
-                else:
-                    Speak
-                    ("Calculator window not found.")
-        else:
-            print("Command not recognized.")
-        if "close wordpad" in command:
-                wordpad_window = gw.getWindowsWithTitle("Wordpad")
-                if wordpad_window:
-                    wordpad_window[0].close()
-                    Speak("wordpad closed.")
-                else:
-                    Speak
-                    ("wordpad window not found.")
+        if(command in myclose):
+            match command:
+                case "close calculator":
+                    calculator_window = gw.getWindowsWithTitle("Calculator")
+                    if calculator_window:
+                        calculator_window[0].close()
+                        Speak("Calculator closed.")
+                    else:
+                        Speak("Calculator window not found.")
+                case "close wordpad":
+                    wordpad_window = gw.getWindowsWithTitle("Wordpad")
+                    if wordpad_window:
+                        wordpad_window[0].close()
+                        Speak("wordpad closed.")
+                    else:
+                        Speak("wordpad window not found.")
+                case "close word":
+                    word_window = gw.getWindowsWithTitle("Word")
+                    if word_window:
+                        word_window[0].close()
+                        Speak("word closed.")
+                    else:
+                        Speak("word window not found.")
+                case "close powerpoint":
+                    pnt_window = gw.getWindowsWithTitle("Powerpoint")
+                    if pnt_window:
+                        pnt_window[0].close()
+                        Speak("powerpoint closed.")
+                    else:
+                        Speak("powerpoint window not found.")
+        if "close youtube" in command:
+            tab_title_to_close = "YouTube"
+            pyautogui.hotkey('alt', 'tab')
+            time.sleep(1)
+            pyautogui.hotkey('ctrl', 'w')
+
+
+
+
+
+
+
+
+
+
+            
+            
+
         
                       
             
