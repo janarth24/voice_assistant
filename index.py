@@ -121,9 +121,14 @@ if __name__ == '__main__':
                         Speak("powerpoint window not found.")
         if "close youtube" in command:
             tab_title_to_close = "YouTube"
-            pyautogui.hotkey('alt', 'tab')
-            time.sleep(1)
-            pyautogui.hotkey('ctrl', 'w')
+            windows = gw.getWindowsWithTitle(tab_title_to_close)
+            if windows:
+                windows[0].activate()
+                pyautogui.hotkey('ctrl', 'w')
+                print("closing youtube")
+        else:
+            print("sorry")
+
 
 
 
