@@ -9,16 +9,16 @@ import speech_recognition as sr
 import webbrowser
 #importing os
 import os
-import time 
 import pygetwindow as gw
 import pyautogui
-import selenium
-from selenium import webdriver
+import random
+
 
 
 def take_commands():
     # initializing speech_recognition
     r = sr.Recognizer()
+    text_to_speech=pyttsx3.init()
     # opening physical microphone of computer
     with sr.Microphone() as source:
         print('Listening.')
@@ -51,12 +51,23 @@ def Speak(audio):
     engine.runAndWait()
 
 
+
 # Driver Code
 if __name__ == '__main__':
     # using while loop to communicate infinitely
     myweb=["youtube","skillrack","facebook"]
     mysystem=["open calculator","open word","open powerpoint","open wordpad"]
     myclose=["close calculator","close word","close wordpad","close powerpoint"]
+    jokes = [
+    "In Which city always have power of 24/7 h? The city name is Electricity",
+    "Why don't scientists trust atoms? Because they make up everything!",
+    "Parallel lines have so much in common. It's a shame they'll never meet.",
+    " What is brown, hairy and wears sunglasses? A coconut on vacation.",
+    "Where did the music teacher leave her keys? In the piano!",
+    "What do you call a guy who’s really loud? Mike.",
+    "Why do birds fly south in the winter? It’s faster than walking!",
+    "Why is a football stadium always cold? It has lots of fans!",
+    ]
     while True:
         commanded = take_commands()
         command=commanded.lower()
@@ -126,8 +137,13 @@ if __name__ == '__main__':
                 windows[0].activate()
                 pyautogui.hotkey('ctrl', 'w')
                 print("closing youtube")
+        if "tell me a joke" in command:
+            random_joke = random.choice(jokes)
+            print(random_joke)
+            Speak(random_joke)
+            
         else:
-            print("sorry")
+            print("Command not recognized.")
 
 
 
