@@ -15,6 +15,7 @@ import random
 
 
 
+
 def take_commands():
     # initializing speech_recognition
     r = sr.Recognizer()
@@ -141,6 +142,8 @@ if __name__ == '__main__':
             random_joke = random.choice(jokes)
             print(random_joke)
             Speak(random_joke)
+        if "play games" in command:
+            import cricket
             
         else:
             print("Command not recognized.")
