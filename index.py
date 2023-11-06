@@ -145,7 +145,16 @@ if __name__ == '__main__':
             Speak(random_joke)
         if "play games" in command:
             import cricket
-            
+        if "open camera" in command:
+            import camera    
+        if "take screenshot" in command:
+                # Capture a screenshot
+                screenshot = pyautogui.screenshot()
+
+                # Save the screenshot to a file
+                screenshot.save("screenshot.png")
+
+                print("Screenshot captured and saved as screenshot.png")    
         else:
             print("Command not recognized.")
 
