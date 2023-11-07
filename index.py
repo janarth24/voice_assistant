@@ -128,7 +128,6 @@ if __name__ == '__main__':
                 windows[0].activate()
                 pyautogui.hotkey('ctrl', 'w')
                 print("closing youtube")
-                
         
 
 
