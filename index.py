@@ -1,5 +1,6 @@
 # importing pyttsx3
 import pyttsx3
+import cv2
 # importing speech_recognition
 import speech_recognition as sr
 # creating take_commands() function which
@@ -13,8 +14,7 @@ import time
 import pygetwindow as gw
 import pyautogui
 import selenium
-from selenium import webdriver
-
+import smtplib
 
 def take_commands():
     # initializing speech_recognition
@@ -22,7 +22,7 @@ def take_commands():
     # opening physical microphone of computer
     with sr.Microphone() as source:
         print('Listening.')
-        r.adjust_for_ambient_noise(source)
+        #r.adjust_for_ambient_noise(source)
         
         r.pause_threshold = 0.5
         # storing audio/sound to audio variable
@@ -54,6 +54,7 @@ def Speak(audio):
 # Driver Code
 if __name__ == '__main__':
     # using while loop to communicate infinitely
+    cap=cv2.VideoCapture(5) 
     myweb=["youtube","skillrack","facebook"]
     mysystem=["open calculator","open word","open powerpoint","open wordpad"]
     myclose=["close calculator","close word","close wordpad","close powerpoint"]
@@ -119,6 +120,7 @@ if __name__ == '__main__':
                         Speak("powerpoint closed.")
                     else:
                         Speak("powerpoint window not found.")
+
         if "close youtube" in command:
             tab_title_to_close = "YouTube"
             windows = gw.getWindowsWithTitle(tab_title_to_close)
@@ -126,8 +128,10 @@ if __name__ == '__main__':
                 windows[0].activate()
                 pyautogui.hotkey('ctrl', 'w')
                 print("closing youtube")
-        else:
-            print("sorry")
+        if "search" in command:
+            import google        
+
+        
 
 
 
