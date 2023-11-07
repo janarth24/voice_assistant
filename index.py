@@ -13,6 +13,7 @@ import os
 import pygetwindow as gw
 import pyautogui
 import random
+from moviepy.editor import *
 
 
 
@@ -154,7 +155,12 @@ if __name__ == '__main__':
                 # Save the screenshot to a file
                 screenshot.save("screenshot.png")
 
-                print("Screenshot captured and saved as screenshot.png")    
+                print("Screenshot captured and saved as screenshot.png")
+        if "convert video to audio" in command:
+            import video_to_audio
+            
+                     
+                
         else:
             print("Command not recognized.")
 

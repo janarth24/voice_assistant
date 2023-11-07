@@ -77,17 +77,8 @@ def last(cs,us):
     return computer_score             
                
   
+b=random.randint(1,6)
 
-
-
-
-          
-
-
-
-
-# b=random.randint(1,6)
-b=1
 
 
 print("LETS SPIN THE TOSS")
