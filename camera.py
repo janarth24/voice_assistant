@@ -19,9 +19,10 @@ else:
             audio = recognizer.listen(source)
         
         try:
+            print("Camera Listening...")
             # Recognize speech using Google Speech Recognition
             command = recognizer.recognize_google(audio).lower()
-            print("Camera Listening...")
+            
             print("You said:", command)
             
             if "capture" in command:
