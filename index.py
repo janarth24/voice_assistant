@@ -1,6 +1,6 @@
+#hello
 # importing pyttsx3
 import pyttsx3
-import cv2
 # importing speech_recognition
 import speech_recognition as sr
 # creating take_commands() function which
@@ -10,19 +10,22 @@ import speech_recognition as sr
 import webbrowser
 #importing os
 import os
-import time 
 import pygetwindow as gw
 import pyautogui
-import selenium
-import smtplib
+import random
+from moviepy.editor import *
+
+
+
 
 def take_commands():
     # initializing speech_recognition
     r = sr.Recognizer()
+    text_to_speech=pyttsx3.init()
     # opening physical microphone of computer
     with sr.Microphone() as source:
         print('Listening.')
-        #r.adjust_for_ambient_noise(source)
+        r.adjust_for_ambient_noise(source)
         
         r.pause_threshold = 0.5
         # storing audio/sound to audio variable
@@ -51,13 +54,23 @@ def Speak(audio):
     engine.runAndWait()
 
 
+
 # Driver Code
 if __name__ == '__main__':
     # using while loop to communicate infinitely
-    cap=cv2.VideoCapture(5) 
     myweb=["youtube","skillrack","facebook"]
     mysystem=["open calculator","open word","open powerpoint","open wordpad"]
     myclose=["close calculator","close word","close wordpad","close powerpoint"]
+    jokes = [
+    "In Which city always have power of 24/7 h? The city name is Electricity",
+    "Why don't scientists trust atoms? Because they make up everything!",
+    "Parallel lines have so much in common. It's a shame they'll never meet.",
+    " What is brown, hairy and wears sunglasses? A coconut on vacation.",
+    "Where did the music teacher leave her keys? In the piano!",
+    "What do you call a guy who’s really loud? Mike.",
+    "Why do birds fly south in the winter? It’s faster than walking!",
+    "Why is a football stadium always cold? It has lots of fans!",
+    ]
     while True:
         commanded = take_commands()
         command=commanded.lower()
@@ -120,31 +133,6 @@ if __name__ == '__main__':
                         Speak("powerpoint closed.")
                     else:
                         Speak("powerpoint window not found.")
-        if "search" in command:
-
-            def search_google(query):
-                search_url = f"https://www.google.com/search?q={query}"
-                webbrowser.open(search_url)
-
-            def main():
-                recognizer = sr.Recognizer()
-                microphone = sr.Microphone()
-
-            with microphone as source:
-                print("Speak something to search on Google...")
-                recognizer.adjust_for_ambient_noise(source)
-                audio = recognizer.listen(source)
-
-            try:
-                query = recognizer.recognize_google(audio)
-                print(f"You said: {query}")
-                search_google(query)
-            except sr.UnknownValueError:
-                print("Sorry, I couldn't understand the audio.")
-            except sr.RequestError as e:
-                print(f"An error occurred: {e}")
-
-
 
         if "close youtube" in command:
             tab_title_to_close = "YouTube"
@@ -153,7 +141,40 @@ if __name__ == '__main__':
                 windows[0].activate()
                 pyautogui.hotkey('ctrl', 'w')
                 print("closing youtube")
-        
+        if "tell me a joke" in command:
+            random_joke = random.choice(jokes)
+            print(random_joke)
+            Speak(random_joke)
+        if "play games" in command:
+            import cricket
+        if "search" in command:
+            
+            import search 
+            
+        if "open camera" in command:
+            import camera    
+        if "take screenshot" in command:
+                # Capture a screenshot
+                screenshot = pyautogui.screenshot()
+
+                # Save the screenshot to a file
+                screenshot.save("screenshot.png")
+
+                print("Screenshot captured and saved as screenshot.png")
+        if "convert video to audio" in command:
+            import video_to_audio   
+        if "convert audio to text" in command:
+            import transcript
+        if "convert speech to audio" in command:
+            import speech_to_audio
+        if "convert audio to synopsis"  in command:
+            import text  
+
+            
+                     
+                
+        else:
+            print("Command not recognized.")
 
 
 
