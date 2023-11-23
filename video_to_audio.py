@@ -1,7 +1,7 @@
 from moviepy.editor import *
 
 # Input MP4 video file
-input_video_file = "voice_assistant/samplevideo.mp4"
+input_video_file = "samplevideo.mp4"
 
 # Output MP3 audio file
 output_audio_file = "sample.mp3"
