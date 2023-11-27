@@ -152,6 +152,8 @@ if __name__ == '__main__':
             import speech_to_audio
         if "convert audio to synopsis"  in command:
             import text  
+        if "close chrome" in command:
+            import close_window    
 
             
                      
