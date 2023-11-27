@@ -1,12 +1,7 @@
-#hello
 # importing pyttsx3
 import pyttsx3
 # importing speech_recognition
 import speech_recognition as sr
-# creating take_commands() function which
-# can take some audio, Recognize and return
-# if there are not any errors
-#importing web browser
 import webbrowser
 #importing os
 import os
@@ -14,9 +9,7 @@ import pygetwindow as gw
 import pyautogui
 import random
 from moviepy.editor import *
-
-
-
+import pyjokes
 
 def take_commands():
     # initializing speech_recognition
@@ -58,19 +51,9 @@ def Speak(audio):
 # Driver Code
 if __name__ == '__main__':
     # using while loop to communicate infinitely
-    myweb=["youtube","skillrack","facebook"]
+    myweb=["open youtube","open skillrack","open facebook"]
     mysystem=["open calculator","open word","open powerpoint","open wordpad"]
     myclose=["close calculator","close word","close wordpad","close powerpoint"]
-    jokes = [
-    "In Which city always have power of 24/7 h? The city name is Electricity",
-    "Why don't scientists trust atoms? Because they make up everything!",
-    "Parallel lines have so much in common. It's a shame they'll never meet.",
-    " What is brown, hairy and wears sunglasses? A coconut on vacation.",
-    "Where did the music teacher leave her keys? In the piano!",
-    "What do you call a guy who’s really loud? Mike.",
-    "Why do birds fly south in the winter? It’s faster than walking!",
-    "Why is a football stadium always cold? It has lots of fans!",
-    ]
     while True:
         commanded = take_commands()
         command=commanded.lower()
@@ -94,13 +77,13 @@ if __name__ == '__main__':
             
         if command in myweb:
             match command:
-                case "youtube":
+                case "open youtube":
                     Speak("Openning Youtube")
                     webbrowser.open("https://youtube.com/" )
-                case "skillrack":
+                case "open skillrack":
                     Speak("Openning SkiiRack")
                     webbrowser.open("https://www.skillrack.com/")
-                case "facebook":
+                case "open facebook":
                     Speak("Openning FaceBook")
                     webbrowser.open("https://www.facebook.com/")
         if(command in myclose):
@@ -134,16 +117,17 @@ if __name__ == '__main__':
                     else:
                         Speak("powerpoint window not found.")
         if "close youtube" in command:
-            tab_title_to_close = "YouTube"
+            tab_title_to_close = "youtube.com"
             windows = gw.getWindowsWithTitle(tab_title_to_close)
             if windows:
                 windows[0].activate()
                 pyautogui.hotkey('ctrl', 'w')
                 print("closing youtube")
         if "tell me a joke" in command:
-            random_joke = random.choice(jokes)
-            print(random_joke)
-            Speak(random_joke)
+            joke = pyjokes.get_joke()
+            # Print the joke
+            print(joke)
+            Speak(joke)
         if "play games" in command:
             import cricket
         if "search" in command:
@@ -164,7 +148,7 @@ if __name__ == '__main__':
             import video_to_audio   
         if "convert audio to text" in command:
             import transcript
-        if "convert speech to audio" in command:
+        if "record audio" in command:
             import speech_to_audio
         if "convert audio to synopsis"  in command:
             import text  
@@ -174,23 +158,3 @@ if __name__ == '__main__':
                 
         else:
             print("Command not recognized.")
-
-
-
-
-
-
-
-
-
-
-
-            
-            
-
-        
-                      
-            
-            
-
-            

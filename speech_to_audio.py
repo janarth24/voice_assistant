@@ -19,7 +19,7 @@ def main2():
 
         try:
             print("You have said \n" + r.recognize_google(audio))
-            print("Audio Recorded Successfully \n ")
+            print("Audio Recorded Successfully in recorded.wav \n ")
 
 
         except Exception as e:
