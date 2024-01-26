@@ -1,1 +1,2 @@
 # voice_assistant
+PACKAGES NEED TO BE INSTALLED IN THE SYSTEM
