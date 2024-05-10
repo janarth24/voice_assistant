@@ -33,8 +33,8 @@ else:
                 if ret:
                     cv2.imwrite("captured_photo.jpg", frame)
                     print("Photo captured and saved as captured_photo.jpg")
-                else:
-                    print("Error: Failed to capture a photo")
+            else:
+                print("Error: Failed to capture a photo")
             
             if "close camera" in command:
                 break  # Exit the loop to close the camera

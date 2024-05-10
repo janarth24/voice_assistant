@@ -8,7 +8,7 @@ import os
 import pygetwindow as gw
 import pyautogui
 import random
-from moviepy.editor import *
+from moviepy.editor import*
 import pyjokes
 
 def take_commands():

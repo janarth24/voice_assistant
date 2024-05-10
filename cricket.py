@@ -1,4 +1,5 @@
 import random
+import time
 
 def bat(us,cs,select):
     s=select
@@ -11,6 +12,7 @@ def bat(us,cs,select):
        
         if(user_bat<=6):
             com_bowl=random.randint(1,6)
+            time.sleep(1)
             print("Computer enters:",com_bowl)
             if(user_bat==com_bowl):
                 print("OUT")
@@ -35,6 +37,7 @@ def bowl(cs,us,select):
         user_bowl=int(input("Enter the number 1 to 6:"))
         if(user_bowl<=6):
             com_bat=random.randint(1,6)
+            time.sleep(1)
             print("Computer enters",com_bat)
             if(com_bat==user_bowl):
                 print("OUT")
@@ -61,6 +64,7 @@ def last(cs,us):
         user_bowl=int(input("Enter the number 1 to 6:"))
         if(user_bowl<=6):
             com_bat=random.randint(1,6)
+            time.sleep(1)
             print("Computer enters",com_bat)
             if(com_bat==user_bowl):
                 print("OUT")
@@ -85,6 +89,7 @@ print("LETS SPIN THE TOSS")
 print("YOUR CALL \n 1.ODD \t 2.EVEN\n")
 toss=int(input("Enter option of the call:"))
 a=int(input("Enter the number 1 to 6:"))
+time.sleep(1)
 print("computer enter:",b)
 player=0
 computer=0
